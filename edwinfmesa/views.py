@@ -6,7 +6,7 @@ from pymongo import MongoClient
 
 def home(request):
 	#connect to database 
-    # connection = MongoClient('widmore.mongohq.com',10010)
+	# connection = MongoClient('widmore.mongohq.com',10010)
 	try:
 		connection = MongoClient('localhost',27017)
 	
@@ -18,7 +18,16 @@ def home(request):
 	
 		db = connection.users
 		user = db.user
-
+		if request.method == "GET":  # envia una variable para seleccionar una organizacion
+			try:
+				name = request.GET['new_user']
+				try:
+					user.insert({'name':name})
+				except:
+					print 'Error intentando guardar dato'
+			except Exception:
+				print 'No hay variable get: new_user'
+		
 		things = user.find()
 	except:
 		things = [{'name':'Ha ocurrido un error con la base de datos'}]
@@ -28,3 +37,4 @@ def home(request):
 	ctx = {'things':things}
 
 	return render_to_response('edwinfmesa/index.html', ctx, context_instance=RequestContext(request))
+
