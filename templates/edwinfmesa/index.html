@@ -1,0 +1,39 @@
+{% extends "edwinfmesa/layout.html" %} {% block TITLE %}Home{% endblock %} {%block body%}
+		
+<div class="row-fluid">
+		<div class="vs-all span12">
+			<div class="hero-unit post-container ">
+
+				
+					<h3>Este es mi primer post </h3>
+					<p>
+						Hola a todos, este es mi primer post, en el cual les mostrare como probar su base de datos MongoDB en un servidor remoto ubicado en alguna parte del mundo, en esta ocasion utilizaremos un servidor de <a href="http://mongohq.com">MongoHQ</a>.
+					</p>
+					<p>
+						Lo primero que debes hacer es crear una cuenta en MongoHQ, y creas una base de datos, despues te dara una informacion para conectarte remotamente desde consola, lo cual en este caso haremos de dos maneras, una es desde el cliente mongo.exe en W7 y la otra es utilizando un driver llamado <a href="pymongo">pymongo</a>
+					</p>
+					<p>
+						A continuacion les mostrare un ejemplo de unos datos que estoy leyendo desde el servidor:
+					</p>
+					<ul>
+						{% for thing in things %}
+							<li><a href="">{{ thing.name }} </a></li>
+						{% endfor %}
+					</ul>
+					<p>
+						Y hasta otra!
+					</p>
+				
+				
+			</div>
+		</div>
+	</div>
+	
+{%endblock%}
+{% block style%}
+{%endblock%} 
+
+{% block js %} 
+<script type="text/javascript">
+</script>
+{% endblock %}
