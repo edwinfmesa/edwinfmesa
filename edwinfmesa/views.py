@@ -6,17 +6,19 @@ from pymongo import MongoClient
 
 def home(request):
 	#connect to database 
-	connection = MongoClient('widmore.mongohq.com',10010)
+    # connection = MongoClient('widmore.mongohq.com',10010)
+	connection = MongoClient('localhost',27017)
 
 	
-	if connection.my_blog.authenticate('edwinfmesa','123456'):
-		db = connection.my_blog
-	else:
-		print "Error de autenticacion"
+	#	if connection.my_blog.authenticate('edwinfmesa','123456'):
+	#		db = connection.my_blog
+	#	else:
+	#		print "Error de autenticacion"
 
-	post = db.post
+	db = connection.users
+	user = db.user
 
-	things = post.find()
+	things = user.find()
 	# print things
 	# for thing in things:
 	# 	print thing['_id']
