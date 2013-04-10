@@ -9,8 +9,19 @@
 					<p>
 						A continuacion se muestra las visitas que ha tenido mi blog
 					</p>
-					
+					<hr>
 					<div id="chart_div"></div>
+					{% for v in datos %}
+			          		id: <strong>{{v.value.id}}</strong> cantidad: {{v.value.count|floatformat:"0"}} <br />
+			          		<ul>
+			          		{% for d in v.value.date %}
+			          			<li>{{ d }}</li>
+			          		{% endfor %}
+			          		</ul>
+			          		<br />
+			          {% endfor %}
+					
+					
 
 			</div>
 		</div>
@@ -29,9 +40,9 @@
       google.setOnLoadCallback(drawChart);
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['Year', 'Sales'],
-          {% for key, value in visitas %}
-          		[{{ key }},{{value}}],
+          ['Quien', 'Cuanto'],
+          {% for v in datos %}
+			['{{ v.value.id }}',{{  v.value.count|floatformat:"0" }}],
           {% endfor %}
           /*['2004',  1000],
           ['2005',  1170],
@@ -41,7 +52,7 @@
 
         var options = {
           title: 'Visitas diarias',
-          hAxis: {title: 'Fecha',  titleTextStyle: {color: 'red'}}
+          hAxis: {title: 'Usuarios',  titleTextStyle: {color: 'red'}}
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
@@ -49,3 +60,6 @@
       }
     </script>
 {%endblock%}
+{% for key, value in visitas %}
+          		[{{ key }},{{value}}],
+          {% endfor %}
