@@ -40,7 +40,7 @@ def home(request):
 					# for i in range(5):
 					# 	x = "2013-04-%s"%(int(random.random()*24)+1)
 					# 	f = datetime.datetime.strptime(x,"%Y-%m-%d")
-						print f
+#						print f
 						# daily_visits.insert({'date': f})
 				except:
 					print 'Error guardando datos', sys.exc_info()[0]
