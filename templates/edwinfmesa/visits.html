@@ -1,0 +1,51 @@
+{% extends "edwinfmesa/layout.html" %} {% block TITLE %}Home{% endblock %} {%block body%}
+		
+<div class="row-fluid">
+		<div class="vs-all span12">
+			<div class="hero-unit post-container ">
+
+				
+					<h3>Visitas diarias</h3>
+					<p>
+						A continuacion se muestra las visitas que ha tenido mi blog
+					</p>
+					
+					<div id="chart_div"></div>
+
+			</div>
+		</div>
+	</div>
+	
+{%endblock%}
+{% block style%}
+{%endblock%} 
+
+{% block js %} 
+{% endblock %}
+
+{% block headerjs %}
+<script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart"]});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Year', 'Sales'],
+          {% for key, value in visitas %}
+          		[{{ key }},{{value}}],
+          {% endfor %}
+          /*['2004',  1000],
+          ['2005',  1170],
+          ['2006',  660],
+          ['2007',  1030]*/
+        ]);
+
+        var options = {
+          title: 'Visitas diarias',
+          hAxis: {title: 'Fecha',  titleTextStyle: {color: 'red'}}
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+{%endblock%}

@@ -21,7 +21,21 @@ textarea {
 body {
     font-size: 1em;/*
     line-height: 1.4;*/
-    background-color: #FAFAFA;
+    /*background-color: #FAFAFA;*/
+    background-image: linear-gradient(bottom, rgb(111,152,198) 3%, rgb(250,234,237) 100%, rgb(176,183,201) 49%);
+background-image: -o-linear-gradient(bottom, rgb(111,152,198) 3%, rgb(250,234,237) 100%, rgb(176,183,201) 49%);
+background-image: -moz-linear-gradient(bottom, rgb(111,152,198) 3%, rgb(250,234,237) 100%, rgb(176,183,201) 49%);
+background-image: -webkit-linear-gradient(bottom, rgb(111,152,198) 3%, rgb(250,234,237) 100%, rgb(176,183,201) 49%);
+background-image: -ms-linear-gradient(bottom, rgb(111,152,198) 3%, rgb(250,234,237) 100%, rgb(176,183,201) 49%);
+
+background-image: -webkit-gradient(
+  linear,
+  left bottom,
+  left top,
+  color-stop(0.03, rgb(111,152,198)),
+  color-stop(1, rgb(250,234,237)),
+  color-stop(0.49, rgb(176,183,201))
+);
 }
 
 /*
